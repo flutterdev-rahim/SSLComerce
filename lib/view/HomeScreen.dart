@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         primary: Colors.deepPurple
                       ),
                       onPressed: ()async{
-                        await DBService().getReceipt(context);
+                        //await DBService().getReceipt(context);
                       },
                       child: Text("PAID",style: TextStyle(color: Colors.white),),
                     ),
