@@ -1,4 +1,4 @@
-import 'package:ddba/sendOtp_screen.dart';
+import 'package:ddba/view/sendOtp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -74,8 +74,7 @@ Image.asset("images/illustration-1.png",width: 150,)
                 ),
                 onPressed: () {
                 },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 60),
+                child: SingleChildScrollView(
                   child: Row(
                     children: [
                       Icon(
@@ -100,7 +99,6 @@ Image.asset("images/illustration-1.png",width: 150,)
 
                     ],
                   ),
-
                 ),
               ),
             ),
@@ -186,8 +184,10 @@ Image.asset("images/illustration-1.png",width: 150,)
                   }
                 },
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 100),
+                  //margin: EdgeInsets.symmetric(horizontal: 100),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "SIGN UP / LOGIN",
