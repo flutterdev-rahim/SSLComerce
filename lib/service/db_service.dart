@@ -14,7 +14,6 @@ import 'package:ddba/model/PaymentModel.dart';
 import '../model/ReceiptModel.dart';
 import 'package:flutter/material.dart';
 
-
 class DBService {
   Future<List<Data>?> getPaymentDetails() async {
     final response = await http.get(

@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       //backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.purple,
+          backgroundColor: Color(0xFFff9d00),
           title: Text("Payments Details"),
         ),
         body: SizedBox(

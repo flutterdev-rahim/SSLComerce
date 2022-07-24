@@ -1,4 +1,5 @@
 import 'package:ddba/view/HomeScreen.dart';
+import 'package:ddba/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'view/Otp_Screen.dart';
@@ -14,11 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Otp_Screen(),//HomeScreen(),//
+      home: SplashScreen(),//HomeScreen(),//
     );
   }
 }
