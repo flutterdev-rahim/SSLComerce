@@ -2,13 +2,14 @@
 import 'dart:convert';
 import 'package:ddba/view/widget.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_sslcommerz/model/SSLCSdkType.dart';
+import 'package:flutter_sslcommerz/model/SSLCTransactionInfoModel.dart';
+import 'package:flutter_sslcommerz/model/SSLCommerzInitialization.dart';
+import 'package:flutter_sslcommerz/model/SSLCurrencyType.dart';
+import 'package:flutter_sslcommerz/sslcommerz.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:ddba/model/PaymentModel.dart';
-// import 'package:sslcommerz_flutter/model/SSLCSdkType.dart';
-// import 'package:sslcommerz_flutter/model/SSLCTransactionInfoModel.dart';
-// import 'package:sslcommerz_flutter/model/SSLCommerzInitialization.dart';
-// import 'package:sslcommerz_flutter/model/SSLCurrencyType.dart';
-// import 'package:sslcommerz_flutter/sslcommerz.dart';
 
 import '../model/ReceiptModel.dart';
 import 'package:flutter/material.dart';
@@ -35,48 +36,56 @@ class DBService {
     }
   }
 
+  getReceipt(BuildContext context) async {
+    Sslcommerz sslcommerz = Sslcommerz(
+        initializer: SSLCommerzInitialization(
+             ipn_url: "https://beta-dtba.btla.net/dashboard",
+            multi_card_name: "visa,master,bkash",
+            currency: SSLCurrencyType.BDT,
+            product_category: "Food",
+            sdkType: SSLCSdkType.TESTBOX,
+            store_id: "dtbab6224f97017631",
+            store_passwd: "dtbab6224f97017631@ssl",
+            total_amount: 3244.0,
+            tran_id: "custom_transaction_id:000123"));
 
+    //Store ID: dtbab6224f97017631
+    // Store Password (API/Secret Key): dtbab6224f97017631@ssl
+    //
+    // final response = await http.get(
+    //     Uri.parse('https://beta-dtba.btla.net/api/bank/receipt'),
+    //     headers: {
+    //       'Content-type': 'application/json',
+    //       'instance-api-secrete': "k8wscw04kwwok4gcwsk488o4sog8o00gsgwsog0k",
+    //       'instance-name': 'sibldtba459807',
+    //     });
+    // print(response.statusCode.toString()+"<<<<<<<<<<<<<get status>>>>>>>>>>ok");
+    // if (response.statusCode == 200) {
+    //   final json = jsonDecode(response.body);
+    //   ReceiptModel receiptModel = ReceiptModel.fromJson(json);
+    //   return receiptModel;
+    // } else if (response.statusCode == 404) {
+    //   final json = jsonDecode(response.body);
+    //
 
-  // getReceipt(BuildContext context) async {
-  //   Sslcommerz sslcommerz = Sslcommerz(
-  //       initializer: SSLCommerzInitialization(
-  //            ipn_url: "https://beta-dtba.btla.net/dashboard",
-  //           multi_card_name: "visa,master,bkash",
-  //           currency: SSLCurrencyType.BDT,
-  //           product_category: "Food",
-  //           sdkType: SSLCSdkType.TESTBOX,
-  //           store_id: "dtbab6224f97017631",
-  //           store_passwd: "dtbab6224f97017631@ssl",
-  //           total_amount: 3244.0,
-  //           tran_id: "custom_transaction_id"));
-  //
-  //   //Store ID: dtbab6224f97017631
-  //   // Store Password (API/Secret Key): dtbab6224f97017631@ssl
-  //   //
-  //   // final response = await http.get(
-  //   //     Uri.parse('https://beta-dtba.btla.net/api/bank/receipt'),
-  //   //     headers: {
-  //   //       'Content-type': 'application/json',
-  //   //       'instance-api-secrete': "k8wscw04kwwok4gcwsk488o4sog8o00gsgwsog0k",
-  //   //       'instance-name': 'sibldtba459807',
-  //   //     });
-  //   // print(response.statusCode.toString()+"<<<<<<<<<<<<<get status>>>>>>>>>>ok");
-  //   // if (response.statusCode == 200) {
-  //   //   final json = jsonDecode(response.body);
-  //   //   ReceiptModel receiptModel = ReceiptModel.fromJson(json);
-  //   //   return receiptModel;
-  //   // } else if (response.statusCode == 404) {
-  //   //   final json = jsonDecode(response.body);
-  //   //
-  //
-  //   var result = await sslcommerz.payNow();
-  //   var model;
-  //   if (result is PlatformException) {
-  //     print("the response is: " + result.message!.toString()  + " code: " + result.code);
-  //   } else {
-  //      model = result;
-  //   }
-  // }
+    var result = await sslcommerz.payNow();
+    if (result is PlatformException) {
+      print("the response is: " +
+          result.message.toString() +
+          " code: " +
+          result.code);
+    } else {
+      SSLCTransactionInfoModel model = result;
+      Fluttertoast.showToast(
+          msg: "Transaction successful: Amount ${model.amount} TK",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.black,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    }
+  }
 }
 
 // "instance": "weascent608691",

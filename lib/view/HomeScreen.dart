@@ -1,7 +1,6 @@
 import 'package:ddba/service/db_service.dart';
 import 'package:ddba/view/widget.dart';
 import 'package:flutter/material.dart';
-
 import '../model/PaymentModel.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -45,8 +44,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     CustomRichText(title: "membershipNumber ",data: payment[0].membershipNumber.toString(),),
                     CustomRichText(title: "memberName ",data: payment[0].memberName.toString(),),
                     CustomRichText(title: "memberMobileNumber ",data: payment[0].memberMobileNumber.toString(),),
-
-
                     SizedBox(
                       height: 10,
                     ),
@@ -55,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         primary: Colors.deepPurple
                       ),
                       onPressed: ()async{
-                        //await DBService().getReceipt(context);
+                        await DBService().getReceipt(context);
                       },
                       child: Text("PAID",style: TextStyle(color: Colors.white),),
                     ),

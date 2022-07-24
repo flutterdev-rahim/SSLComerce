@@ -40,7 +40,8 @@ dependencies:
   time_range: ^1.0.2
   shared_preferences: ^2.0.15
   provider: ^6.0.2
-#  sslcommerz_flutter: ^0.0.4
+  fluttertoast: ^8.0.9
+  flutter_sslcommerz: ^2.1.1-nullsafety.0
 
 dev_dependencies:
   flutter_test:
