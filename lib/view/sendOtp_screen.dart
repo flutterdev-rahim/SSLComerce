@@ -22,11 +22,17 @@ class _SendOtp_screenState extends State<SendOtp_screen> {
   final String postUrl="https://bppshops.com/api/loginWithOtp";
   TextEditingController numberController =TextEditingController();
 
-  // void saveOtpUserToken({String? token}) async {
-  //   SharedPreferences _prefs = await SharedPreferences.getInstance();
-  //   _prefs.setString('token', token!);
-  //   print(_prefs.getString("token"));
-  // }
+  void saveOtpUserToken({String? token}) async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    _prefs.setString('token', token!);
+    print(_prefs.getString("token"));
+  }
+
+  void savePhoneNumber({String? mobile}) async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    _prefs.setString('mobile', mobile!);
+    print(_prefs.getString('mobile').toString() + ">>>>>>>>>>saveed<<<<<<<<<<");
+  }
 
 
 
@@ -188,12 +194,16 @@ class _SendOtp_screenState extends State<SendOtp_screen> {
                 onPressed: () async {
                   Response response= await getPost();
 
-                  if (response.statusCode == 201) {
-                    final json=jsonDecode(response.body);
+                  if (response.statusCode == 201){
+                    final json = jsonDecode(response.body);
                     print(json["token"]);
-                    // saveOtpUserToken(
-                    //   token: json["token"],
-                    // );
+                    saveOtpUserToken(
+                      token: json["token"],
+                    );
+                    print(json["user"]["mobile"]+">>>>>>>>>>>>>>>######ok######<<<<<<<<<<<<");
+                    savePhoneNumber(
+                      mobile: json["user"]["mobile"],
+                    );
 
                     print("Okey..........");
 
