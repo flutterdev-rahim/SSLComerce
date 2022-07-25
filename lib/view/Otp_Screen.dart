@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:ddba/view/sendOtp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,6 +13,7 @@ class Otp_Screen extends StatefulWidget {
 }
 
 class _Otp_ScreenState extends State<Otp_Screen> {
+  final formKey = GlobalKey<FormState>(); //key for form
   TextEditingController numberController = TextEditingController();
 
   final String postsUrl ="https://bppshops.com/api/sendOtp";
@@ -21,12 +24,17 @@ class _Otp_ScreenState extends State<Otp_Screen> {
     return res.statusCode;
 
   }
+  bool _autoValidate = false;
+  late String mobile;
+
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Color(0xFFff9d00),
         // leading: IconButton(
         //   onPressed: () {
         //     Navigator.pop(context);
@@ -49,19 +57,11 @@ class _Otp_ScreenState extends State<Otp_Screen> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          key: formKey,
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
-              child: Container(
-                  child:
-                  Column(
-                    children: [
-
-Image.asset("images/illustration-1.png",width: 150,)
-                    ],
-                  )
-
-              ),
+              child:Image.asset("images/illustration-1.png",width: 150,),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
@@ -70,17 +70,17 @@ Image.asset("images/illustration-1.png",width: 150,)
                   primary: Colors.white,
                   onPrimary: Colors.white,
                   elevation: 2,
-                  minimumSize: Size(100, 50),
                 ),
                 onPressed: () {
                 },
                 child: SingleChildScrollView(
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
                         FontAwesomeIcons.google,
                         size: 20, //Icon Size
-                        color: Colors.purple, //Color Of Icon
+                        color: Color(0xFFff9d00), //Color Of Icon
                       ),
                       SizedBox(
                         width: 10,
@@ -156,6 +156,7 @@ Image.asset("images/illustration-1.png",width: 150,)
                       decoration: InputDecoration(
                         labelText: '+88',
                       ),
+
                     ),
                   ),
                 ],
@@ -165,13 +166,12 @@ Image.asset("images/illustration-1.png",width: 150,)
               padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.purple,
+                  primary: Color(0xFFff9d00),
                   onPrimary: Color(0xffE37D4E),
                   elevation: 3,
-                  minimumSize: Size(100, 50),
                 ),
                 onPressed: () async{
-                  if (numberController.text.isNotEmpty) {
+                  if (numberController.text.isNotEmpty && numberController.text.length>10) {
                     int responseStatus =await getPost();
                     print(responseStatus);
                     if (responseStatus == 200) {

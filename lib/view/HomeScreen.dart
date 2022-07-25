@@ -48,8 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 10,
                     ),
                     ElevatedButton(
+
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.deepPurple
+                          minimumSize: Size(150, 40),
+                          elevation: 2,
+                          primary: Color(0xFFff9d00)
                       ),
                       onPressed: ()async{
                         await DBService().getReceipt(context);

@@ -22,11 +22,11 @@ class _SendOtp_screenState extends State<SendOtp_screen> {
   final String postUrl="https://bppshops.com/api/loginWithOtp";
   TextEditingController numberController =TextEditingController();
 
-  void saveOtpUserToken({String? token}) async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    _prefs.setString('token', token!);
-    print(_prefs.getString("token"));
-  }
+  // void saveOtpUserToken({String? token}) async {
+  //   SharedPreferences _prefs = await SharedPreferences.getInstance();
+  //   _prefs.setString('token', token!);
+  //   print(_prefs.getString("token"));
+  // }
 
 
 
@@ -52,7 +52,7 @@ class _SendOtp_screenState extends State<SendOtp_screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Color(0xFFff9d00),
         leading: IconButton(
           onPressed: (){},
           icon: Icon(Icons.arrow_back,),
@@ -92,11 +92,12 @@ class _SendOtp_screenState extends State<SendOtp_screen> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 80),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
                         FontAwesomeIcons.google,
                         size: 20, //Icon Size
-                        color: Colors.purple, //Color Of Icon
+                        color:Color(0xFFff9d00), //Color Of Icon
                       ),
                       SizedBox(
                         width: 10,
@@ -179,7 +180,7 @@ class _SendOtp_screenState extends State<SendOtp_screen> {
               padding: EdgeInsets.only(left: 15, right: 15, top: 20),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.purple,
+                  primary:Color(0xFFff9d00),
                   onPrimary: Color(0xffE37D4E),
                   elevation: 3,
                   minimumSize: Size(100, 40),
@@ -190,9 +191,9 @@ class _SendOtp_screenState extends State<SendOtp_screen> {
                   if (response.statusCode == 201) {
                     final json=jsonDecode(response.body);
                     print(json["token"]);
-                    saveOtpUserToken(
-                      token: json["token"],
-                    );
+                    // saveOtpUserToken(
+                    //   token: json["token"],
+                    // );
 
                     print("Okey..........");
 
@@ -214,6 +215,7 @@ class _SendOtp_screenState extends State<SendOtp_screen> {
                   child: Container(
                   //  margin: EdgeInsets.symmetric(horizontal: 130),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "Enter",
