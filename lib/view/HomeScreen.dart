@@ -18,9 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: primaryColor,//Colors.purple,
+          backgroundColor: primaryColor, //Colors.purple,
           centerTitle: true,
-          title: Text("Payments Details"),
+          title: Text("Payments Receipt List"),
         ),
         body: SizedBox(
           height: size.height,
@@ -127,56 +127,56 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ...MainMenuModel.list.map(
-                    (MainMenuModel data) {
+                (MainMenuModel data) {
                   return data.isBlank
                       ? const SizedBox(
-                    width: 10,
-                  )
+                          width: 10,
+                        )
                       : InkWell(
-                    onTap: () {
-                      setState(() {
-                        currentIndex = data.index;
-                      });
-                      // ignore: avoid_print
-                      print(data.index.toString());
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 10),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          //SizedBox(height: 10,),
-                          Icon(
-                            data.icon,
-                            color: currentIndex == data.index
-                                ? primaryColor
-                                : secondaryColor,
+                          onTap: () {
+                            setState(() {
+                              currentIndex = data.index;
+                            });
+                            // ignore: avoid_print
+                            print(data.index.toString());
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 10),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                //SizedBox(height: 10,),
+                                Icon(
+                                  data.icon,
+                                  color: currentIndex == data.index
+                                      ? primaryColor
+                                      : secondaryColor,
+                                ),
+                                const SizedBox(
+                                  height: 12,
+                                ),
+                                Text(
+                                  data.label!,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1!
+                                      .copyWith(
+                                          color: currentIndex == data.index
+                                              ? primaryColor
+                                              : secondaryColor),
+                                )
+                              ],
+                            ),
                           ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          Text(
-                            data.label!,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText1!
-                                .copyWith(
-                                color: currentIndex == data.index
-                                    ? primaryColor
-                                    : secondaryColor),
-                          )
-                        ],
-                      ),
-                    ),
-                  );
+                        );
                 },
               ),
             ],
           ),
-        )
-    );
+        ));
   }
+
   _getBody() {
     switch (currentIndex) {
       case 0:
@@ -191,8 +191,9 @@ class _HomeScreenState extends State<HomeScreen> {
         return _buildHompageBody;
     }
   }
-  Widget _buildHompageBody(BuildContext context){
-    final size= MediaQuery.of(context).size;
+
+  Widget _buildHompageBody(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SizedBox(
       height: size.height,
       width: size.width,
@@ -202,8 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
           if (snapshot.hasData) {
             List<Data> payment = snapshot.data as List<Data>;
             return Padding(
-              padding:
-              const EdgeInsets.symmetric(horizontal: 0, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 20),
               child: SingleChildScrollView(
                 child: DataTable(
                     showBottomBorder: true,
@@ -212,36 +212,36 @@ class _HomeScreenState extends State<HomeScreen> {
                     columns: [
                       DataColumn(
                           label: Text(
-                            'Receipt Number',
-                            style: TextStyle(
-                              //fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.black),
-                          )),
+                        'Receipt Number',
+                        style: TextStyle(
+                            //fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.black),
+                      )),
                       DataColumn(
                           label: Text(
-                            'Receipt Date',
-                            style: TextStyle(
-                              //fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.black),
-                          )),
+                        'Receipt Date',
+                        style: TextStyle(
+                            //fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.black),
+                      )),
                       DataColumn(
                           label: Text(
-                            'totalAmount',
-                            style: TextStyle(
-                              //fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.black),
-                          )),
+                        'totalAmount',
+                        style: TextStyle(
+                            //fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.black),
+                      )),
                       DataColumn(
                           label: Text(
-                            'status',
-                            style: TextStyle(
-                              //fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.black),
-                          ))
+                        'status',
+                        style: TextStyle(
+                            //fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.black),
+                      ))
                     ],
                     rows: [
                       DataRow(cells: [
@@ -319,4 +319,3 @@ class MainMenuModel {
     ),
   ];
 }
-
