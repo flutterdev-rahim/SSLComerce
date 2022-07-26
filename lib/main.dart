@@ -1,4 +1,5 @@
 import 'package:ddba/view/HomeScreen.dart';
+import 'package:ddba/view/login_screen.dart';
 import 'package:ddba/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,9 +19,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
+        primaryColor: Color(0xFFff9d00),
       ),
-      home: SplashScreen(),//HomeScreen(),//
+      home: LoginScreen(),//HomeScreen(),//
     );
   }
 }

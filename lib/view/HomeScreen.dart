@@ -1,4 +1,6 @@
 import 'package:ddba/service/db_service.dart';
+import 'package:ddba/component/nav_drawer.dart';
+import 'package:ddba/view/profile_Screen.dart';
 import 'package:ddba/view/widget.dart';
 import 'package:flutter/material.dart';
 import '../model/PaymentModel.dart';
@@ -18,8 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
       //backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Color(0xFFff9d00),
-          title: Text("Payments Details"),
+          title: Center(child: Text("Payments Details",style: TextStyle(color: Colors.white),)),
         ),
+        drawer: NavigationDrawer(),
         body: SizedBox(
           height: size.height,
           width: size.width,
@@ -66,6 +69,37 @@ class _HomeScreenState extends State<HomeScreen> {
               }
             },
           ),
-        ));
+        ),
+      bottomNavigationBar:BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+
+            icon: Icon(Icons.home),
+            label: "Home",
+            backgroundColor: Colors.orange
+          ),
+
+
+          BottomNavigationBarItem(
+              icon: Icon(Icons.call),
+              label: "Calls",
+              backgroundColor: Colors.orange
+          )
+          ,
+          BottomNavigationBarItem(
+              icon: IconButton(icon: Icon(Icons.person),onPressed: (){
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(_)=>MyProfile()));
+
+              },),
+              label: "Profile",
+              backgroundColor: Colors.orange
+
+          )
+        ],
+
+      )
+    );
+
   }
+
 }

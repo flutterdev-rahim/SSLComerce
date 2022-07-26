@@ -6,6 +6,7 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'HomeScreen.dart';
+import 'Otp_Screen.dart';
 
 class SendOtp_screen extends StatefulWidget {
   SendOtp_screen({Key? key, required this.mobile, required this.token})
@@ -60,8 +61,11 @@ class _SendOtp_screenState extends State<SendOtp_screen> {
       appBar: AppBar(
         backgroundColor: Color(0xFFff9d00),
         leading: IconButton(
-          onPressed: (){},
-          icon: Icon(Icons.arrow_back,),
+          onPressed: (){
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(_)=>Otp_Screen()));
+
+          },
+          icon: Icon(Icons.arrow_back,color: Colors.white,),
 
         ),
         title: Center(
@@ -84,37 +88,77 @@ class _SendOtp_screenState extends State<SendOtp_screen> {
             //   child: Text("Get Token"),
             // ),
             Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 50),
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 80),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
                   onPrimary: Colors.white,
-                  elevation: 3,
-                  minimumSize: Size(100, 50),
+                  elevation: 2,
                 ),
                 onPressed: () {
-
                 },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 80),
+                child: SingleChildScrollView(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
                         FontAwesomeIcons.google,
                         size: 20, //Icon Size
-                        color:Color(0xFFff9d00), //Color Of Icon
+                        color: Color(0xFFff9d00), //Color Of Icon
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       Text(
-                        'Login with Email',
-                        style: TextStyle(color: Colors.black,fontSize: 16),
+                        "Sign Up or Login with Google",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                      SizedBox(
+                        width: 20,
+                      ),
+
                     ],
                   ),
                 ),
+              ),
+            ),
+            SizedBox(height: 40,),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+                onPrimary: Colors.white,
+                elevation: 2,
+              ),
+              onPressed: () {
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    FontAwesomeIcons.facebook,
+                    size: 20, //Icon Size
+                    color: Color(0xFFff9d00), //Color Of Icon
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Sign Up or Login with Facebook",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+
+                ],
               ),
             ),
 

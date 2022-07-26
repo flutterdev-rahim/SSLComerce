@@ -60,11 +60,7 @@ class _Otp_ScreenState extends State<Otp_Screen> {
           key: formKey,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
-              child:Image.asset("images/illustration-1.png",width: 150,),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 80),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
@@ -73,38 +69,68 @@ class _Otp_ScreenState extends State<Otp_Screen> {
                 ),
                 onPressed: () {
                 },
-                child: SingleChildScrollView(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        FontAwesomeIcons.google,
-                        size: 20, //Icon Size
-                        color: Color(0xFFff9d00), //Color Of Icon
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      FontAwesomeIcons.facebook,
+                      size: 20, //Icon Size
+                      color: Color(0xFFff9d00), //Color Of Icon
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Sign Up or Login with Facebook",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Sign Up or Login with Google",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
+            SizedBox(height: 20,),
+
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+                onPrimary: Colors.white,
+                elevation: 2,
+              ),
+              onPressed: () {
+              },
+              child: SingleChildScrollView(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      FontAwesomeIcons.google,
+                      size: 20, //Icon Size
+                      color: Color(0xFFff9d00), //Color Of Icon
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Sign Up or Login with Google",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+
+                  ],
+                ),
+              ),
             ),
+            SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
@@ -130,7 +156,8 @@ class _Otp_ScreenState extends State<Otp_Screen> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+
+            SizedBox(height: 50),
             Text(
               "PLEASE ENTER YOUR MOBILE PHONE NUMBER",
               style: TextStyle(
