@@ -45,8 +45,9 @@ class DBService {
             sdkType: SSLCSdkType.TESTBOX,
             store_id: "dtbab6224f97017631",
             store_passwd: "dtbab6224f97017631@ssl",
-            total_amount: 3244.0,
-            tran_id: "custom_transaction_id:000123"));
+            total_amount: 10.0,
+            tran_id: "custom_transaction_id:000123"),
+    );
 
     //Store ID: dtbab6224f97017631
     // Store Password (API/Secret Key): dtbab6224f97017631@ssl
