@@ -3,7 +3,9 @@ import 'package:ddba/component/nav_drawer.dart';
 import 'package:ddba/view/profile_Screen.dart';
 import 'package:ddba/view/widget.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../model/PaymentModel.dart';
+import 'app_style.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -186,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
       case 1:
         return Container();
       case 2:
-        return Container();
+        return MyProfile();
       case 3:
         return Container();
       default:
