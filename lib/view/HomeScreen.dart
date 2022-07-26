@@ -22,6 +22,20 @@ class _HomeScreenState extends State<HomeScreen> {
           centerTitle: true,
           title: Text("Payments Receipt List"),
         ),
+        drawer: Drawer(
+          child: Scaffold(
+            appBar: AppBar(
+              leading: SizedBox(),
+              backgroundColor: primaryColor,
+              centerTitle: true,
+              title: Text("drawer"),
+            ),
+            body: Container(
+              color: secondaryColor,//Colors.brown,
+              //child: ,
+            ),
+          ),
+        ),
         body: SizedBox(
           height: size.height,
           width: size.width,
